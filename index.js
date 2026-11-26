@@ -26,6 +26,8 @@ function replaceProduct(array, oldProduct, newProduct) {
   const itemChange = array.indexOf(oldProduct);
   if (itemChange >= 0) {
     array.splice(itemChange, 1, newProduct);
+  } else {
+    console.log("This old product was not found");
   }
   return array;
 }
@@ -71,7 +73,10 @@ function getPassedScores(array) {
 }
 
 function getTopScores(array, count) {
-  return array.slice(-count);
+  if (count > 0) {
+    return array.slice(-count);
+  }
+  return [];
 }
 
 function removeLowestScore(array) {
@@ -88,7 +93,7 @@ getScores(scores);
 
 console.log(getPassedScores(scores));
 
-console.log(getTopScores(scores, 5));
+console.log(getTopScores(scores, -5));
 console.log(getTopScores(scores, 3));
 
 console.log(removeLowestScore(scores));
@@ -124,6 +129,7 @@ console.log(getMessagesCount(messages));
 console.log(findMessage(messages, "Hello"));
 console.log(findMessage(messages, "Time"));
 console.log(findMessage(messages, "tomorrow"));
+console.log(findMessage(messages, "See you tomorrow"));
 
 console.log(removeMessage(messages, "Hello"));
 console.log(removeMessage(messages, "Good evening"));
